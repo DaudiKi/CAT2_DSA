@@ -1,110 +1,89 @@
 public class Linked_List {
 
-    /**
-     * Node class represents each element in the linked list.
-     */
+    // A private nested class that represents each node in the linked list.
+    // Each node stores an integer value and a pointer to the next node.
     private static class Node {
-        int data;   // The data stored in the node
-        Node next;  // Pointer to the next node in the list
+        int data;
+        Node next;
 
-        /**
-         * Constructor to create a new node with the given data.
-         * @param data The integer value to store in the node.
-         */
+        // Creates a new node with the given integer value.
         Node(int data) {
             this.data = data;
             this.next = null;
         }
     }
 
-    private Node head; // The head of the linked list
+    // 'head' points to the first node in the list (or null if the list is empty).
+    private Node head;
 
-    /**
-     * Constructor to initialize an empty linked list.
-     */
+    // Initializes an empty linked list.
     public Linked_List() {
         head = null;
     }
 
-    /**
-     * Inserts a new node at the beginning of the linked list.
-     *
-     * @param data The integer value to insert.
-     */
+    // Inserts a new node at the front of the list.
     public void insertAtBeginning(int data) {
         Node newNode = new Node(data);
-        newNode.next = head; // Link the new node to the current head
-        head = newNode;      // Update head to the new node
+        newNode.next = head; // Link the new node to the old head
+        head = newNode;      // The new node becomes the new head
     }
 
-    /**
-     * Inserts a new node at the end of the linked list.
-     *
-     * @param data The integer value to insert.
-     */
+    // Inserts a new node at the end of the list.
     public void insertAtEnd(int data) {
         Node newNode = new Node(data);
         if (head == null) {
-            // If the list is empty, new node becomes the head
+            // If the list is empty, make the new node the head.
             head = newNode;
         } else {
-            // Traverse to the end of the list
+            // Otherwise, walk through the list until the last node.
             Node current = head;
             while (current.next != null) {
                 current = current.next;
             }
-            // Link the last node to the new node
+            // Attach the new node at the end.
             current.next = newNode;
         }
     }
 
-    /**
-     * Deletes the node at the beginning of the linked list.
-     * If the list is empty, a message is displayed.
-     */
+    // Removes the node at the beginning of the list.
+    // If the list is empty, it prints a message instead.
     public void deleteFromBeginning() {
         if (head == null) {
             System.out.println("List is empty. Nothing to delete.");
         } else {
-            // Update head to the next node, effectively removing the first node
+            // Move 'head' to the next node, effectively removing the first node.
             head = head.next;
         }
     }
 
-    /**
-     * Utility method to print the linked list.
-     */
+    // Prints the entire list, starting from 'head' and following each 'next' link.
     public void printList() {
         Node current = head;
         while (current != null) {
             System.out.print(current.data + " -> ");
             current = current.next;
         }
-        System.out.println("null");
+        System.out.println("null"); // Mark the end of the list.
     }
 
-    /**
-     * Main method for basic testing of the linked list operations.
-     */
+    // A basic test to show that insertions and deletions work as expected.
     public static void main(String[] args) {
         Linked_List list = new Linked_List();
 
-        // Inserting nodes at the beginning
+        // Insert a couple of elements at the front.
         list.insertAtBeginning(10);
         list.insertAtBeginning(20);
 
-        // Inserting a node at the end
+        // Insert one element at the end.
         list.insertAtEnd(30);
 
-        // Print the current list: Expected output: 20 -> 10 -> 30 -> null
+        // Print the list to verify the insertions.
         System.out.println("Linked List after insertions:");
-        list.printList();
+        list.printList(); // Expected: 20 -> 10 -> 30 -> null
 
-        // Delete the node at the beginning
+        // Remove the first element and print the list again.
         list.deleteFromBeginning();
-
-        // Print the updated list: Expected output: 10 -> 30 -> null
         System.out.println("Linked List after deletion from beginning:");
-        list.printList();
+        list.printList(); // Expected: 10 -> 30 -> null
     }
 }
