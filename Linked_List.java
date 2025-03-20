@@ -1,15 +1,5 @@
-/**
- * Linked_List.java
- *
- * A Java program to implement a singly linked list with methods to:
- * - Insert a node at the beginning
- * - Insert a node at the end
- * - Delete a node from the beginning
- *
- * Ensure that your code is well-commented and follows good programming practices.
- */
 
- public class Linked_List {
+public class Linked_List {
 
     /**
      * Node class represents each element in the linked list.
