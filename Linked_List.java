@@ -87,3 +87,6 @@ public class Linked_List {
         list.printList(); // Expected: 10 -> 30 -> null
     }
 }
+
+
+// This was challenging, but good!
